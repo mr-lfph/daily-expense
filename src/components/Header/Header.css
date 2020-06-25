@@ -1,0 +1,28 @@
+body
+{
+    background: teal;
+    height: 115px;
+    /* border: 2px solid white;  */
+}
+.header-right div.d-flex {
+    flex-flow: row-reverse;
+   
+}
+.header-right div.d-flex button {
+     margin: 15px; 
+}
+ 
+img{
+    width: 150px;
+    height: 100px;
+   margin: 5px;
+    content: url("../../image/De1.png");
+    
+    background-color:lightcyan;  
+}
+.hla{text-align: left;}
+
+nav{
+    background-color: lightseagreen;
+   ;
+}
