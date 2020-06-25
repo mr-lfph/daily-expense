@@ -9,7 +9,6 @@ const Header = () => {
                     <img  alt="Expense" className="rounded-circle" />
                     <span>WelCome </span>
                 </div>
-
                 <div className="col">
                     <div className="header-right">
                         
