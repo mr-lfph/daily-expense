@@ -1,17 +1,22 @@
 import React from 'react';
 import './Header.css';
+import About from '../About/About';
+import { Link, NavLink } from 'react-router-dom';
+
 
 const Header = () => {
+    const userName = "Mizanur Rahman";
+    const appName="be better do Best";
     return (
         <div className="container">
             <div className="row d-flex ">
                 <div className="col hla">
-                    <img  alt="Expense" className="rounded-circle" />
-                    <span>WelCome </span>
+                    <img alt="Expense" className="himg rounded-circle" />
+                   WelCome 2 <span className="logInName"> {appName}</span>
                 </div>
                 <div className="col">
                     <div className="header-right">
-                        
+
                         <div className="d-flex">
                             <button className="btn">Sign Up</button>
                             <button className="btn">Log In</button>
@@ -20,13 +25,17 @@ const Header = () => {
                             </button>
                         </div>
                         <div className="d-flex">
-                         <p>Welcome Mr user name </p>
+                            <p>Welcome <span className="logInName">{userName}</span> </p>
                         </div>
                     </div>
                 </div>
 
             </div>
-            <nav><a>Home</a> <a>About</a></nav>
+            <nav>
+                <a href="/Home">Home</a>
+                <a href="/About">About</a>
+
+            </nav>
         </div>
     )
 }
