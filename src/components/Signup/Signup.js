@@ -21,7 +21,7 @@ const Signup = () => {
             */}
 
             <div className="col-12">
-                <div className="row justify-content-center">
+                <div className="row justify-content-center ">
                     <div className="col-3 text-right">Name</div>
                     <div className="col-3 text-left">
                         <input placeholder="Your User Name"></input>
@@ -37,7 +37,8 @@ const Signup = () => {
                 <div className="row justify-content-center">
                     <div className="col-3 text-right">Password</div>
                     <div className="col-3 text-left">
-                        <input placeholder="Password"></input>
+                                            
+                        <input type="password" placeholder="Password"></input>
                     </div>
                 </div>
             </div>
