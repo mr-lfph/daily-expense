@@ -6,25 +6,27 @@ import { Link, NavLink } from 'react-router-dom';
 
 const Header = () => {
     const userName = "Mizanur Rahman";
-    const appName="be better do Best";
+    const appName = "be better do Best";
     return (
         <div className="container">
             <div className="row d-flex ">
                 <div className="col hla">
                     <img alt="Expense" className="himg rounded-circle" />
                    WelCome 2 <span className="logInName"> {appName}</span>
+                   {/* <button>SignInWithGoogle</button> */}
                 </div>
                 <div className="col">
                     <div className="header-right">
-
                         <div className="d-flex">
-                            <button className="btn">Sign Up</button>
-                            <button className="btn">Log In</button>
+                          
+                            <Link to="/Signup"> <button className="btn">Sign Up</button></Link>
+                            <Link to="/Login"> <button className="btn">Log In</button> </Link>
                             <button className="btn">
                                 <i className="fa fa-cart-plus" aria-hidden="true"></i>
                             </button>
                         </div>
                         <div className="d-flex">
+
                             <p>Welcome <span className="logInName">{userName}</span> </p>
                         </div>
                     </div>
@@ -34,6 +36,8 @@ const Header = () => {
             <nav>
                 <a href="/Home">Home</a>
                 <a href="/About">About</a>
+                
+
 
             </nav>
         </div>

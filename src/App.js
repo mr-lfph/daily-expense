@@ -5,6 +5,8 @@ import Header from './components/Header/Header';
 import About from './components/About/About';
 import { Link,Switch, BrowserRouter as  Router, Route } from 'react-router-dom';
 import Home from './components/Home/Home';
+import Signup from './components/Signup/Signup';
+import Login from './components/Login/Login';
 
 function App() {
   return (
@@ -21,8 +23,10 @@ function App() {
             
           <Route path="/About">
           <About/>
+          
           </Route>
-      
+          <Route path="/Signup"><Signup/></Route>
+          <Route path="/Login"><Login/></Route>
       </Switch>
  </Router>
      
