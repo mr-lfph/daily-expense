@@ -27,7 +27,7 @@ const Signup = () => {
         e.preventDefault();
         console.log('create');
 
-      
+   
          const user = auth.createUserr(email, password, name);
        console.log(user);
     }
