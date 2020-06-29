@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import auth from '../Login/useAuth';
- 
+
+
 
 
 const Signup = () => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-
-
+    
     const onchangeHandler = e => {
-
         const { name, value } = e.target;
         if (name === 'name') {
             setName(value)
@@ -23,19 +22,16 @@ const Signup = () => {
         }
     }
 
-    const createUser = async e => {
+    const createdUser = async e => {
         e.preventDefault();
-        console.log('create');
-
-   
-         const user = auth.createUserr(email, password, name);
-       console.log(user);
+        const user = await auth.createUser(email, password, name)
+        .then(res=>console.log(res));    
     }
     return (
         <div className="container">
             <h2>Sign Up / Registration Here </h2>
             <br />
-            <form onSubmit={createUser}>
+            <form onSubmit={createdUser}>
                 <div className="col-12">
                     <div className="row justify-content-center ">
                         <div className="col-3 text-right">Name</div>
