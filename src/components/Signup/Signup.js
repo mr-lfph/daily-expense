@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import auth from '../Login/useAuth';
+import firebase from "../../firebaseconfig";
+import { Link, Redirect } from 'react-router-dom';
+ 
+import Home from '../Home/Home';
 
 
 
@@ -8,7 +12,7 @@ const Signup = () => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    
+
     const onchangeHandler = e => {
         const { name, value } = e.target;
         if (name === 'name') {
@@ -24,9 +28,32 @@ const Signup = () => {
 
     const createdUser = async e => {
         e.preventDefault();
-        const user = await auth.createUser(email, password, name)
-        .then(res=>console.log(res));    
+        //     const user = await auth.createUser(email, password, name)
+        //     .then(res=>console.log(res));    
+        // }
+
+        //create user 
+        // firebase.auth().createUserWithEmailAndPassword(email, password).then(res => {
+        //         console.log('response:', res.user);
+        //     }).catch(e => {
+        //         console.log('errorMessage: ', e.message);
+        //     });
+
+        //signInuser
+      await  firebase.auth().signInWithEmailAndPassword(email, password)
+            .then(res => {
+                if (res.user) {console.log('user found: ',res.user)
+                return <Home></Home>
+            }else {
+                    console.log('paoa jai ni ');
+                }
+            })
+            .catch(e => {
+                console.log('error', (e.message))
+            });
     }
+
+
     return (
         <div className="container">
             <h2>Sign Up / Registration Here </h2>
