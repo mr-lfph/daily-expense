@@ -7,6 +7,7 @@ import { Link,Switch, BrowserRouter as  Router, Route } from 'react-router-dom';
 import Home from './components/Home/Home';
 import Signup from './components/Signup/Signup';
 import Login from './components/Login/Login';
+import SignUp1 from './components/SignUp1/SignUp1';
 
 function App() {
   return (
@@ -23,6 +24,9 @@ function App() {
             
           <Route path="/About">
           <About/>
+          <Route path="/SignUp1">
+            <SignUp1></SignUp1>
+          </Route>
           
           </Route>
           <Route path="/Signup"><Signup/></Route>
