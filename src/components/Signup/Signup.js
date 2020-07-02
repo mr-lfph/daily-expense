@@ -1,18 +1,10 @@
 import React, { useState } from 'react';
 import Auth from '../Login/useAuth';
-import firebase from "../../firebaseconfig";
-import { Link, Redirect } from 'react-router-dom';
- 
-import Home from '../Home/Home';
-
-
-
 
 const Signup = () => {
     const auth=Auth();
    // console.log(auth.createUser("mr.lph@gmail.com","Ph@558906","Mizan"));
-    
-    
+        
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -33,10 +25,11 @@ const Signup = () => {
     const createdUser = async e => {
         e.preventDefault();
        console.log('calling');
+       debugger
             const user = await auth.createUser(email, password, name)
             .then(res=>{
                 
-                console.log('user:',res.user)
+                console.log('user:',user, res.user)
                 console.log('create usersss:',res.createUser);
                 
             }).catch(e =>{
@@ -76,20 +69,21 @@ const Signup = () => {
                     <div className="row justify-content-center ">
                         <div className="col-3 text-right">Name</div>
                         <div className="col-3 text-left">
-                            <input name="name" value={name} placeholder="User Name" required onChange={onchangeHandler}></input>
+                            <input type="text" name="name" placeholder="User Name"  onBlur={onchangeHandler} required></input>
                         </div>
                     </div>
                     <div className="row justify-content-center">
                         <div className="col-3 text-right">Email</div>
                         <div className="col-3 text-left">
-                            <input name="email" value={email} placeholder="Email" required onChange={onchangeHandler}></input>
+                            <input type="text" name="email" placeholder="Email" onBlur={onchangeHandler} required></input>
                         </div>
                     </div>
+
 
                     <div className="row justify-content-center">
                         <div className="col-3 text-right">Password</div>
                         <div className="col-3 text-left">
-                            <input name="password" value={password} type="password" required placeholder="Password" onChange={onchangeHandler}></input>
+                            <input type="password" name="password" placeholder="Password" onBlur={onchangeHandler} required ></input>
                         </div>
                     </div>
                     <br />

@@ -6,11 +6,7 @@ import firebaseConfig from "../../firebaseconfig";
 
 
 const Auth = () => {
-    // const email="mr.lfph@gmail.com"
-    // const password="Ph@558906"
-    // const name="LfPh";
-        
-        const createUser = (email, password, name) => {
+    const createUser = (email, password, name) => {
             console.log(email,password,name);
             console.log('called create user');
          firebase.auth().createUserWithEmailAndPassword(email, password, name)
@@ -23,7 +19,7 @@ const Auth = () => {
             })
         .catch((error)=> {
                 const msg = error.message;
-                console.log('error',error);
+                console.log('error',msg);
                 return error.message;
             })
     }
