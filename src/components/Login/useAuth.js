@@ -6,29 +6,24 @@ import firebaseConfig from "../../firebaseconfig";
 
 
 const Auth = () => {
+    const [user, setUser] = useState(null)  
+    // save user info in firestor
     const createUser = (email, password, name) => {
-            console.log(email,password,name);
-            console.log('called create user');
-         firebase.auth().createUserWithEmailAndPassword(email, password, name)
-         .then((res)=>{})
-         .then((res) => {
-            console.log('called');
-             console.log('res:',res);
-            return res.user;
-
+        console.log('calling create user');
+        return firebase.auth().createUserWithEmailAndPassword(email, password)
+            .then((resp) => {
+                console.log('resp:', resp);               
+                return resp;
             })
-        .catch((error)=> {
+            .catch((error) => {
                 const msg = error.message;
-                console.log('error',msg);
-                return error.message;
+                console.log('error', msg);
+
             })
     }
-    console.log('cruser', createUser)
-
- return { 
-     createUser
+    return {
+        createUser
     }
-
 }
 export default Auth;
 
