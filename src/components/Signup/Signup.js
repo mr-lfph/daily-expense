@@ -6,6 +6,8 @@ const Signup = (props) => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    let isSignIn=false;
+    let errorMessage="";
     const onchangeHandler = e => {
         const { name, value } = e.target;
 
@@ -24,10 +26,13 @@ const Signup = (props) => {
             .then(res => {
                 if (res) {
                     console.log('signup res:',res)
-                    props.history.push('/');
-                }
-            }).catch(e => {
-                console.log('signup errorss:', e.message)
+                    isSignIn=true;
+                    errorMessage="";
+                   }
+            }).catch(er => {
+                console.log('signup errorss:', er.message)
+                errorMessage=er.message;
+                isSignIn=false;
             });
     }
     return (
@@ -68,6 +73,12 @@ const Signup = (props) => {
 
                 </div>
             </form>
+        
+            {
+            isSignIn? <p style={{color:'green'}} >User Created Successfully</p>:<p style={{color:'red'}}> {errorMessage} </p>
+           
+           }
+            <p>{console.log(props.msg)}</p>
         </div>
 
     );
