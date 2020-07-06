@@ -72,13 +72,11 @@ const Signup = (props) => {
                     </div>
 
                 </div>
-            </form>
-        
+            </form>       
             {
-            isSignIn? <p style={{color:'green'}} >User Created Successfully</p>:<p style={{color:'red'}}> {errorMessage} </p>
-           
+            isSignIn? <p style={{color:'green'}} >User Created Successfully</p>:<p style={{color:'red'}}> {errorMessage} </p>          
            }
-            <p>{console.log(props.msg)}</p>
+           
         </div>
 
     );
