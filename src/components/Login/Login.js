@@ -1,20 +1,58 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Login.css';
 import img from '../../image/gg.png'
-
- 
+import Auth from './useAuth'
 
 const Login = () => {
-     
+
+    const auth = Auth()
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [eid, setEid] = useState('')
+    
+    const onchangeHandler = e => {
+       const { name, value } = e.target;
+        if (name === 'email') {
+            setEmail(value)          
+        }
+        if (name === 'password') {
+            setPassword(value)         
+        }
+    }
+    let displayName="";
+    const handleSignIn = e =>{
+        e.preventDefault();
+        e.target.reset()
+     return  auth.signInWithUserPass(email, password).then(
+            res => {
+               console.log('res:', res)
+               console.log('resusermail : ', res.user, res.user.email)
+               const emailid=res.user.email
+               setEid(emailid)
+                displayName=res.user.displayName;
+                console.log('displayNameInside',displayName)
+                return res
+            }
+           
+        ).catch(err=> {
+            console.log(err)
+        })
+    }
     return (
-        <div>
-                <br/>
-                
-                <button className="btn w-25">Signin with <img className="googleIcon" src={img}  alt=""/> Google</button> <br/>
-                <p>or</p>
-                <input placeholder="Enter your Email" type="text" className="rounded w-25" /> <br/>
-               <input  placeholder="Enter your Password" type="password" className="rounded w-25" /> <br/><br/>
-               <button className="btn w-25">Login</button>
+        <div><br />
+            <form onSubmit={handleSignIn}>
+            <button className="btn w-25">Signin with <img className="googleIcon" src={img} alt="" /> Google</button> <br />
+            <p>or</p>
+            <input placeholder="Enter your Email" type="text" name="email" className="rounded w-25" onBlur={onchangeHandler} /> <br />
+            <input placeholder="Enter your Password" type="password" name="password" className="rounded w-25" onBlur={onchangeHandler} /> <br /><br />
+            <button type="submit"  className="btn w-25" >Login</button>
+            </form>
+            {
+                 console.log('displayNameOutSide',displayName)
+            }             
+            {             
+                eid === "" ? "": (<p style={{ color: 'white' }}>User Logged in Successfully</p> )
+            }
         </div>
     );
 };
