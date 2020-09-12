@@ -1,9 +1,15 @@
 import React from 'react';
 import './Header.css';
 import { Link } from 'react-router-dom';
+import '../Login/Login'
+//import { useAuth } from '../Login/useAuth';
 
 
-const Header = () => {
+const Header = (props) => {
+   // const auth=useAuth() 
+
+    //console.log(auth)
+
     const userName = "Mizanur Rahman";
     const appName = "be better do Best";
     return (

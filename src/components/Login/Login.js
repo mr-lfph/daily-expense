@@ -3,7 +3,10 @@ import './Login.css';
 import img from '../../image/gg.png'
 import Auth from './useAuth'
 
-const Login = () => {
+
+
+
+const Login = (props) => {
 
     const auth = Auth()
     const [email, setEmail] = useState('')
@@ -19,18 +22,16 @@ const Login = () => {
             setPassword(value)         
         }
     }
-    let displayName="";
+    
     const handleSignIn = e =>{
         e.preventDefault();
         e.target.reset()
      return  auth.signInWithUserPass(email, password).then(
             res => {
-               console.log('res:', res)
-               console.log('resusermail : ', res.user, res.user.email)
+               //console.log('res:', res)
                const emailid=res.user.email
                setEid(emailid)
-                displayName=res.user.displayName;
-                console.log('displayNameInside',displayName)
+            
                 return res
             }
            
@@ -47,12 +48,12 @@ const Login = () => {
             <input placeholder="Enter your Password" type="password" name="password" className="rounded w-25" onBlur={onchangeHandler} /> <br /><br />
             <button type="submit"  className="btn w-25" >Login</button>
             </form>
-            {
-                 console.log('displayNameOutSide',displayName)
-            }             
+                       
             {             
-                eid === "" ? "": (<p style={{ color: 'white' }}>User Logged in Successfully</p> )
+                eid === "" ? "": (<p style={{ color: 'white' }}>Logged in Successfully</p> )
+                
             }
+           
         </div>
     );
 };
