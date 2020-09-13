@@ -1,16 +1,17 @@
 
 import React, { useContext, useEffect } from 'react'
-import * as firebase from 'firebase/app'
+import  * as firebase from 'firebase/app'
 import 'firebase/auth';
 //import firebaseConfig from "../../firebaseconfig";
 import "../../firebaseconfig";
 import { createContext, useState } from 'react';
+ 
 
 const AuthContext = createContext()
 
 export const AuthContexProvider = (props) => {
     const auth = Auth()
-    return <AuthContext.Provider value={auth} >{props.childreen}</AuthContext.Provider>
+    return <AuthContext.Provider value={auth}>{props.children}</AuthContext.Provider>
 }
 
 //create custom hook 
@@ -79,6 +80,17 @@ const Auth = (props) => {
                 // ...
             });
     }
+    const signOut=()=>{
+        return firebase.auth().signOut().then(function(){
+            setUser(null)
+            console.log('user1:',user)
+             return true
+        })
+        .catch(function(err){
+            console.log(err)
+            return false;
+        })
+    }
 
     useEffect(() => {
         firebase.auth().onAuthStateChanged(function (usr) {
@@ -94,7 +106,8 @@ const Auth = (props) => {
     return {
         user,
         createUser,
-        signInWithUserPass
+        signInWithUserPass,
+        signOut
     }
 }
 export default Auth;

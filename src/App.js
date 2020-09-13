@@ -13,8 +13,9 @@ function App() {
   return (
     <div className="App">
       <AuthContexProvider>
+      <Router>
       <Header></Header>
-        <Router>
+       
            <Switch>
             <Route exact path="/">
               <Home></Home>
@@ -34,7 +35,7 @@ function App() {
             <Route path="/Login"><Login /></Route>
           </Switch>
         </Router>
-      </AuthContexProvider>
+        </AuthContexProvider>
     </div>
   );
 }

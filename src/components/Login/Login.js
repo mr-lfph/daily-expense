@@ -31,7 +31,7 @@ const Login = (props) => {
                //console.log('res:', res)
                const emailid=res.user.email
                setEid(emailid)
-            
+               window.location.pathname='/';
                 return res
             }
            
